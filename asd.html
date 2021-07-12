@@ -1,0 +1,49 @@
+
+
+<script type="text/javascript">
+var max_time = document.getElementById("countdown").textContent;
+var c_seconds  = 0;
+var total_seconds =60*max_time;
+max_time = parseInt(total_seconds/60);
+c_seconds = parseInt(total_seconds%60);
+document.getElementById("quiz-time-left").innerHTML='Time Left: ' + max_time + ' minutes ' + c_seconds + ' seconds';
+function init(){
+document.getElementById("quiz-time-left").innerHTML='Time Left: ' + max_time + ' minutes ' + c_seconds + ' seconds';
+setTimeout("CheckTime()",999);
+}
+function CheckTime(){
+document.getElementById("quiz-time-left").innerHTML='Time Left: ' + max_time + ' minutes ' + c_seconds + ' seconds' ;
+if(total_seconds <=0){
+setTimeout('document.quiz.submit()',1);
+   document.getElementById("sumdiv").click();
+document.getElementById("allbtn").style.display = "none";
+    } else
+    {
+total_seconds = total_seconds -1;
+max_time = parseInt(total_seconds/60);
+c_seconds = parseInt(total_seconds%60);
+setTimeout("CheckTime()",999);
+}
+
+}
+init();
+
+</script>
+
+
+<script type="text/javascript">
+
+ function finishpage()
+{
+alert("unload event detected!");
+document.quiz.submit();
+}
+window.onbeforeunload= function() {
+setTimeout('document.quiz.submit()',1);
+}
+</script>
+
+
+ <form method="post" name="quiz" id="quiz_form" action="" >
+
+</form>
